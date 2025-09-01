@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from rest_framework import status, generics
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
-from .serializers import RegisterSerializer, ProfileSerializer, SuccessRequestSerializer, RequestSerializer, RequestCountSerializer, ProfilePictureSerializer, PendingRequestSerializer
+from .serializers import RegisterSerializer, ProfileSerializer, PendingRequestSerializer, SuccessRequestSerializer, RequestSerializer, RequestCountSerializer, ProfilePictureSerializer, PendingRequestSerializer
 from .models import Profile, Request
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
@@ -111,3 +111,10 @@ class SuccessRequestsView(APIView):
         requests = Request.objects.filter(user_id=user_id, status="Success")
         serializer = SuccessRequestSerializer(requests, many=True)
         return Response(serializer.data)
+    
+class PendingRequestListView(generics.ListAPIView):
+    permission_classes = [AllowAny]
+    serializer_class = PendingRequestSerializer
+
+    def get_queryset(self):
+        return Request.objects.filter(status='Pending')

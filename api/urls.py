@@ -16,4 +16,6 @@ urlpatterns = [
     
     path('pending-requests/<int:user_id>/', views.PendingRequestsView.as_view(), name='pending-requests'),
     path('success-requests/<int:user_id>/', views.SuccessRequestsView.as_view(), name='success-requests'),
+    
+    path('pending-requests/', views.PendingRequestListView.as_view(), name='pending-requests'),
 ]

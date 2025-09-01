@@ -6,6 +6,7 @@ from .models import Profile, Request
 
 class ProfileSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source='user.username', read_only=True)
+    profile_picture = serializers.ImageField(use_url=True)
 
     class Meta:
         model = Profile
@@ -65,11 +66,26 @@ class ProfilePictureSerializer(serializers.ModelSerializer):
         
         
 class PendingRequestSerializer(serializers.ModelSerializer):
+    user_id = serializers.IntegerField(source="user.id", read_only=True)
+    first_name = serializers.CharField(source="user.first_name", read_only=True)
+    last_name = serializers.CharField(source="user.last_name", read_only=True)
     class Meta:
         model = Request
-        fields = ['id', 'garbage_type', 'location', 'status', 'date_requested']
+        fields = [
+            'user_id',
+            'first_name',
+            'last_name',
+            'id',
+            'garbage_type',
+            'location',
+            'status',
+            'date_requested'
+        ]
+
+
         
 class SuccessRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Request
         fields = ['id', 'garbage_type', 'location', 'status', 'date_requested']
+        
