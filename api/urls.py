@@ -18,4 +18,8 @@ urlpatterns = [
     path('success-requests/<int:user_id>/', views.SuccessRequestsView.as_view(), name='success-requests'),
     
     path('pending-requests/', views.PendingRequestListView.as_view(), name='pending-requests'),
+    path('garbage-counts/', views.GarbageCountView.as_view(), name='garbage-count'),
+
+    
+    path('send-sms/<int:request_id>/', views.SendNotificationAPIView.as_view(), name='send_sms'),
 ]

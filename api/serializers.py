@@ -3,6 +3,11 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import Profile, Request
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'first_name', 'last_name']
+        
 
 class ProfileSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source='user.username', read_only=True)
@@ -88,4 +93,33 @@ class SuccessRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Request
         fields = ['id', 'garbage_type', 'location', 'status', 'date_requested']
+        
+        
+        
+class GarbageCountSerializer(serializers.Serializer):
+    garbage_type = serializers.CharField()
+    count = serializers.IntegerField()
+    
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+    requests = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Profile
+        fields = ['id', 'user', 'address', 'profile_picture', 'requests']
+
+    def get_requests(self, obj):
+        pending_requests = Request.objects.filter(user=obj.user, status='Pending')
+        return RequestSerializer(pending_requests, many=True).data
+    
+    
+
+
+class PickUpRequestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Request
+        fields = '__all__'
+        
         
