@@ -48,7 +48,7 @@ class SendNotificationAPIView(views.APIView):
         )
 
         data = {
-            'sims': [331],
+            'sims': [330],
             'random_sender': False,
             'contact_lists': [],
             'mobile_numbers': [f'+63{phone_number[1:]}' if phone_number.startswith('0') else phone_number],
