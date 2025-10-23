@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://<username>:<password>@<host>:<port>/<dbname>'
+        default='postgresql://database_9uif_user:Utc0WAZMpUgncKdh9bP97LW5bJ7FzmUy@dpg-d3t3okk9c44c73ch9ga0-a/database_9uif'
     )
 }
 
