@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-n07q6x*4o2rh9-cj4r0bioai(@sm7zrqv0qfsp-)o_%l!$2$aa
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ["https://garbagecollector-backend-3.onrender.com"]
+CSRF_TRUSTED_ORIGINS = ["https://garbagecollector-backend-4.onrender.com"]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
