@@ -39,7 +39,7 @@ class SendNotificationAPIView(views.APIView):
         combined_id = f"{pickup_request.id}-{random_suffix}"
         current_datetime = timezone.localtime(timezone.now()).strftime("%Y-%m-%d %I:%M %p")
 
-        api_key = 'owia8oEaOkCBpSa9WqzDej8iGmbRvMfFB1qhwJl60de67e6e'
+        api_key = 'LIZSLQ8lBg3GeGUtgEI9OHAgZHk8KBweehDNgHCT1e46d190'
         name = user.first_name or "Resident"
         message = (
             f"Hello, {name}! Your garbage pickup request (ID: {combined_id}) "
