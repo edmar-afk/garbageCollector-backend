@@ -117,6 +117,7 @@ class SendNotificationAPIView(views.APIView):
             status=status.HTTP_200_OK if success_count > 0 else status.HTTP_400_BAD_REQUEST
         )
             
+            
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
