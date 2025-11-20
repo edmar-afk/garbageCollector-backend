@@ -55,7 +55,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 class RequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Request
-        fields = ['id', 'user', 'garbage_type', 'location', 'date_requested']
+        fields = ['id', 'user', 'garbage_type', 'location', 'date_requested', 'sacks']
         read_only_fields = ['id', 'date_requested', 'user']
         
 
@@ -84,7 +84,8 @@ class PendingRequestSerializer(serializers.ModelSerializer):
             'garbage_type',
             'location',
             'status',
-            'date_requested'
+            'date_requested',
+            'sacks',
         ]
 
 
@@ -92,7 +93,7 @@ class PendingRequestSerializer(serializers.ModelSerializer):
 class SuccessRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Request
-        fields = ['id', 'garbage_type', 'location', 'status', 'date_requested']
+        fields = ['id', 'garbage_type', 'location', 'status', 'date_requested', 'sacks']
         
         
         

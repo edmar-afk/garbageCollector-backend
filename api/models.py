@@ -25,3 +25,4 @@ class Request(models.Model):
     location = models.TextField()
     status = models.TextField(default='Pending')
     date_requested = models.DateTimeField(auto_now_add=True)
+    sacks = models.TextField(blank=True, null=True)
