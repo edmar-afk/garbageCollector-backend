@@ -213,7 +213,7 @@ class PendingRequestsView(APIView):
 class SuccessRequestsView(APIView):
     permission_classes = [AllowAny]
     def get(self, request, user_id):
-        requests = Request.objects.filter(user_id=user_id, status="Success")
+        requests = Request.objects.filter(user_id=user_id, status="Picked up")
         serializer = SuccessRequestSerializer(requests, many=True)
         return Response(serializer.data)
     
